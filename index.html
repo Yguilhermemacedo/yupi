@@ -31,10 +31,10 @@
             <nav id="menu">
                 <ul class="menu-lista">
                     <li class="menu-item">
-                        <a href="#" class="menu-link">Quem somos</a>
+                        <a href="#sobre" class="menu-link">Quem somos</a>
                     </li>
                     <li class="menu-item">
-                        <a href="#" class="menu-link">Serviços</a>
+                        <a href="#servicos" class="menu-link">Serviços</a>
                     </li>
                     <li class="menu-item">
                         <a href="#" class="menu-link">Blog</a>
@@ -44,8 +44,8 @@
                         <button id="btn-sub-menu"><i class='bx bxs-down-arrow' ></i></button>
                         <div class="sub-menu hidden">
                             <ul class="lista-sub-menu">
-                                <li><a href="#">Gerador de EAN</a></li>
-                                <li><a href="#">Cadastro de produtos</a></li>
+                                <li><a href="https://yupicommerce.com.br/gerador-de-ean-para-marketplaces/" target="_blank">Gerador de EAN</a></li>
+                                <li><a href="https://yupicommerce.com.br/cadastro-de-produtos/" target="_blank">Cadastro de produtos</a></li>
                             </ul>
                         </div>
                     </li>
@@ -163,28 +163,78 @@
                 <img src="imagens/bling.png" alt="Logo bling" class="img-bling">
             </div>
             <div class="destaque__sobre">
-                <h2>Você está a um passo de mudar o destino de sua empresa</h2>
-
                 <div>
-                    <img src="imagens/icone-form.png" alt="ícone de formulário">
+                    <img src="imagens/icone-form.png" alt="ícone de formulário" class="icon-form">
                     <div class="infos">
                         <h3>Preencha o formulário</h3>
                         <p>Envie suas informações de contato. Todos os seus dados estarão seguros, vamos cuidar bem deles.</p>
                     </div>
                 </div>
                 <div>
-                    <img src="imagens/icon-whatsapp.png" alt="Ícone WhatsApp">
+                    <img src="imagens/icon-whatsapp.png" alt="Ícone WhatsApp" class="icon-whatsapp">
                     <div class="infos">
                         <h3>Fale com especialistas</h3>
                         <p>Em 12 horas você irá receber o contato de um nossos especialistas</p>
                     </div>
                 </div>
-
+            </div>
+        </section>
+        <section id="perguntas__frequentes">
+            <h2>Perguntas frequentes</h2>
+            <div class="container__perguntas">
+                
+                <div class="pergunta">
+                    <h3>Estou começando do zero a Yupi é para mim?</h3>
+                    <button class="close-resposta">
+                        <span class="line"></span>
+                        <span class="line"></span>
+                    </button>
+                    <div class="resposta">
+                        <p>Sim, a Yupi tem uma solução para cada fase da sua empresa desde a Implantação a Assessoria</p>
+                    </div>
+                </div>
+                <div class="pergunta">
+                    <h3>A Yupi cobra porcentagem sobre minhas vendas?</h3>
+                    <button class="close-resposta">
+                        <span class="line"></span>
+                        <span class="line"></span>
+                    </button>
+                    <div class="resposta">
+                        <p>Não, a Yupi não cobra comissões e nem taxas sobre o seu faturamento visando nunca comprometer o seu lucro.</p>
+                    </div>
+                </div>
+                <div class="pergunta">
+                    <h3>Quais as vantagens de ter uma Assessoria em Marketplace?</h3>
+                    <button class="close-resposta">
+                        <span class="line"></span>
+                        <span class="line"></span>
+                    </button>
+                    <div class="resposta">
+                        <p>Com nosso serviço de Assessoria em Marketplace nós cuidamos desde o cadastro até as estratégias responsáveis por alavancar seu faturamento te dando mais lucro e tempo para você cuidar do seu negócio.</p>
+                    </div>
+                </div>                
             </div>
         </section>
     </main>   
     <footer>
-        <!-- Rodapé -->
+        <div class="rodape">
+            <div class="nav-footer-media">
+                <img src="imagens/icone-2.png" alt="Logo da Yupi Commerce">
+                <h3>Redes sociais</h3>
+                <ul class="social-media-footer">
+                    <li><a href="https://www.instagram.com/yupicommerce/" target="_blank"><i class='bx bxl-instagram'tar></i></a></li>
+                    <li><a href="https://www.facebook.com/yupicommerc" target="_blank"><i class='bx bxl-facebook-square' tar></i></a></li>
+                    <li><a href="https://www.linkedin.com/company/yupi-commerce/" target="_blank"><i class='bx bxl-linkedin-square' style="font-size: 40px; color: #fff;"></i></a></li>
+                </ul>
+            </div>
+            <div class="nav-footer">
+                <a href="sobre">Quem somos</a>
+                <a href="#" target="_blank">Serviços</a>
+                <a href="#" target="_blank">Blog</a>
+                <a href="#" target="_blank">Espaço do cliente</a>
+            </div>
+        </div>
+        <span class="desenvolvimento">Yupi Commerce | <a href="https://pagina-pessoall.vercel.app" target="_blank">Guilherme Macedo</a></span>
     </footer>
 
 <script>
@@ -262,6 +312,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
     carrossel.addEventListener('touchmove', (e) => {
         moveDrag(e.touches[0]);
+    });
+});
+
+    // Botão de abrir respostas
+    document.querySelectorAll('.pergunta').forEach(pergunta => {
+    const btn = pergunta.querySelector('.close-resposta');
+    const resposta = pergunta.querySelector('.resposta');
+
+    btn.addEventListener('click', function() {
+        this.classList.toggle('active');
+        resposta.classList.toggle('active');
     });
 });
 
