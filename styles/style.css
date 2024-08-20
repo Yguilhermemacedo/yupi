@@ -289,6 +289,10 @@
 
     .slide-carrossel {
         display: flex;
+        overflow-x: scroll;
+        scroll-behavior: smooth;
+        cursor: grab;
+        -webkit-overflow-scrolling: touch;
         gap: 20px;
         transition: transform 0.3s ease-in-out;
     }
@@ -305,6 +309,9 @@
         border-radius: 15px;
         background-color: #fff;
         padding: 20px;
+        flex: 0 0 auto;
+        width: 250px; /* Ajuste conforme necessário */
+        margin-right: 16px;
         transition: all 0.3s ease-in-out;
     }
 

@@ -264,39 +264,24 @@ document.addEventListener('DOMContentLoaded', function() {
     let isDown = false;
     let startX;
     let scrollLeft;
-    let index = 0;
-
-    const autoSlide = () => {
-        if (window.innerWidth > 767) return; // Desativa o deslizamento automático em telas maiores
-        index++;
-        if (index >= carrossel.children.length) {
-            index = 0;
-        }
-        carrossel.style.transition = 'transform 1s ease';
-        carrossel.style.transform = `translateX(-${index * 254}px)`;
-    };
-
-    let autoSlideInterval = setInterval(autoSlide, 5000); // Alterne para o próximo slide a cada 5 segundos
 
     const startDrag = (e) => {
         if (window.innerWidth > 767) return; // Desativa o comportamento de arrasto em telas maiores
         isDown = true;
-        startX = e.pageX - carrossel.offsetLeft;
+        startX = e.pageX || e.touches[0].pageX - carrossel.offsetLeft;
         scrollLeft = carrossel.scrollLeft;
-        clearInterval(autoSlideInterval);
     };
 
     const endDrag = () => {
         isDown = false;
-        autoSlideInterval = setInterval(autoSlide, 5000);
     };
 
     const moveDrag = (e) => {
         if (!isDown || window.innerWidth > 767) return;
         e.preventDefault();
-        const x = e.pageX - carrossel.offsetLeft;
-        const walk = (x - startX) * 0.5;
-        carrossel.style.transform = `translateX(${-walk}px)`;
+        const x = e.pageX || e.touches[0].pageX - carrossel.offsetLeft;
+        const walk = (x - startX) * 2; // Ajuste o valor de 2 para ajustar a sensibilidade do deslize
+        carrossel.scrollLeft = scrollLeft - walk;
     };
 
     carrossel.addEventListener('mousedown', startDrag);
@@ -305,13 +290,13 @@ document.addEventListener('DOMContentLoaded', function() {
     carrossel.addEventListener('mousemove', moveDrag);
 
     carrossel.addEventListener('touchstart', (e) => {
-        startDrag(e.touches[0]);
+        startDrag(e);
     });
 
     carrossel.addEventListener('touchend', endDrag);
 
     carrossel.addEventListener('touchmove', (e) => {
-        moveDrag(e.touches[0]);
+        moveDrag(e);
     });
 });
 
